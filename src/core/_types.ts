@@ -4,20 +4,13 @@ export interface DataItemParental extends DataItem {
   children?: (DataItemParental | DataItem)[]
 }
 
-export interface GroupingHierarchyLevel {
-  key: Function
-  nodeItem?: Function
-  nodeItemData?: Function
-  title?: Function
-  params?: GroupingHierarchyLevelParams
-}
-
-export interface GroupingHierarchyLevelParams {
-  [key: number | string]: any // eslint-disable-line
-  node?: boolean
-  innerParent?: boolean
-}
-
 export interface DataItemGrouped extends DataItem {
   children?: (DataItemGrouped | DataItemParental | DataItem)[]
+}
+
+export interface GroupingHierarchyLevel {
+  data?: Function
+  nodeItem?: Function
+  title?: Function
+  tree?: boolean
 }

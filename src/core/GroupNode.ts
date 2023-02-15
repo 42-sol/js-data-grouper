@@ -1,9 +1,8 @@
 export class GroupNode {
-  __id;
   node;
   hieLevel;
   $nodeName;
-  $active;
+  $active = true;
   __isThatNode: true
   nextLevelNodes = [];
   innerItems = [];
@@ -11,12 +10,10 @@ export class GroupNode {
   prevParents = [];
   allRecursiveChildren = [];
 
-  constructor(node, hieLevel, name, id, lastBranch) {
-    this.__id = id;
+  constructor(node, hieLevel, name, lastBranch) {
     this.node = node;
     this.hieLevel = hieLevel;
     this.$nodeName = name;
-    this.$active = true;
 
     lastBranch.push(this);
   }
