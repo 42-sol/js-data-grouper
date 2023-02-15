@@ -1,42 +1,31 @@
 import { makeParentTree } from './core/makeParentTree';
 import { groupData } from './core/dataGrouper';
-import { DataItem, DataItemGrouped, GroupingHierarchyLevel } from './core/_types';
+import { DataItem, DataItemGrouped, GroupingHierarchyLevel, NodeItem } from './core/types';
 import { testEmployees, testCompanies } from './testData';
 
 console.log('testEmployees', testEmployees);
 console.log('testCompanies', testCompanies);
 
-const employeesTree = makeParentTree(testEmployees, null, 'parent_id:id');
+const employeesTree = makeParentTree(testEmployees, null);
 console.log('employeesTree', employeesTree);
 
-const companiesTree = makeParentTree(testEmployees, null, 'parent_id:id');
-console.log('companiesTree', companiesTree);
-
-// const groupingHierarchy: GroupingHierarchyLevel[] = [
-//   {
-//     key: (item: DataItem) => 'Company:' + item.job_start,
-//     nodeItem: (item: DataItem) => testCompanies!.find(_ => _.name === item.company),
-//     nodeItemData: () => testCompanies,
-//     title: (item: DataItem) => testCompanies!.find(_ => _.name === item.company)?.name,
-//   },
-//   {
-//     key: (item: DataItem) => 'JobStart:' + item.job_start,
-//     title: (item: DataItem) => item.job_start,
-//   }
-// ];
-
-// const graphByCondition: DataItemGrouped[] = groupData(employeesTree, groupingHierarchy);
-// console.log('graphByCondition', graphByCondition);
+/**
+ * groupingHierarchy functions' params explanation
+ */
+interface groupingLevelCbParams {
+  item?: DataItem,
+  nodeItem?: NodeItem,
+  nodeData?: NodeItem[]
+};
 
 const groupingHierarchy: GroupingHierarchyLevel[] = [
   {
-    // nodeItem: (item: DataItem, data: any) => ({  }),
-    title: (item: DataItem) => item.job_start,
+    nodeData: () => testCompanies,
+    nodeItem: ({ item, nodeData }) => nodeData.find((_: NodeItem) => _.id === item.company_id),
+    nodeTitle: ({ nodeItem }) => nodeItem.name,
   },
   {
-    data: () => companiesTree,
-    nodeItem: (item: DataItem, data: any) => data.find(_ => _.id === item.id),
-    title: (item: DataItem) => testCompanies!.find(_ => _.name === item.company)?.name,
+    nodeTitle: ({ item }) => item.job_start,
   }
 ];
 
