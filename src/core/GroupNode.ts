@@ -57,4 +57,4 @@ export class GroupNode {
       ...this.subNodes
     ];
   }
-};
+}

@@ -14,12 +14,12 @@ let $groupingHierarchy;
  */
 function shouldIterateDeeper(hieLevel: number, maxHieLevel: number): boolean {
   return hieLevel < maxHieLevel;
-};
+}
 
 /**
  * Recursive function to create new or get existed
  */
-function findWhereToPush(item: DataItemParental, lastBranch: GroupNode[], hieLevel: number = 0): void {
+function findWhereToPush(item: DataItemParental, lastBranch: GroupNode[], hieLevel = 0): void {
   const currentNode: GroupNode = getNodeToPush(item, lastBranch, hieLevel);
 
   // collect all inner items through the graph branch
@@ -30,7 +30,7 @@ function findWhereToPush(item: DataItemParental, lastBranch: GroupNode[], hieLev
   shouldIterateDeeper(hieLevel, $groupingHierarchy.length - 1)
     ? findWhereToPush(item, currentNode.nextLevelNodes, hieLevel + 1)
     : currentNode.innerItems.push(item);
-};
+}
 
 /**
  * Returns GroupNode in the graph for item
@@ -47,7 +47,7 @@ function getNodeToPush(item: DataItemParental, lastBranch: GroupNode[], hieLevel
     // if it is neccessary create parental tree to nodes
     if (nodeItem.parent_id && levelData?.length) {
       const maxParentalDepth = level.params?.maxParentalDepth || 0;
-      let parentChain: NodeItem[] = makeParentChain(nodeItem, levelData, maxParentalDepth).reverse();
+      const parentChain: NodeItem[] = makeParentChain(nodeItem, levelData, maxParentalDepth).reverse();
 
       let lastSubPlace: GroupNode[] = lastBranch;
       let subNode: GroupNode;
@@ -74,23 +74,23 @@ function getNodeToPush(item: DataItemParental, lastBranch: GroupNode[], hieLevel
 
   // else create "others" node
   return findExistedNode(lastBranch, uid('other')) || new GroupNode(null, uid('other'), 'Прочее').addTo(lastBranch);
-};
+}
 
 /**
  * Returns array of item, it's parent, parent of it's parent, etc.
  */
-function makeParentChain(nodeItem: NodeItem, nodeData: NodeItem[], maxDepth: number = 0) {
+function makeParentChain(nodeItem: NodeItem, nodeData: NodeItem[], maxDepth = 0) {
   let result = [nodeItem];
 
   if (nodeItem.parent_id) {
-    let parent = nodeData.find(_ => _.id === nodeItem.parent_id);
+    const parent = nodeData.find(_ => _.id === nodeItem.parent_id);
     if (parent) {
       result = result.concat(makeParentChain(parent, nodeData));
     }
   }
 
   return result.slice(-maxDepth);
-};
+}
 
 /**
  * Returns existed sibling GroupNode or undefined (if nothing is found)
@@ -101,7 +101,7 @@ function findExistedNode(lastBranch: GroupNode[], uid: string): GroupNode | unde
       return lastBranch[i];
     }
   }
-};
+}
 
 /**
  *  Function with one iteration to push item
@@ -118,4 +118,4 @@ export function groupData(
 
   $groupingHierarchy = null;
   return rootNodes;
-};
+}

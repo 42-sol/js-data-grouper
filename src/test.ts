@@ -16,7 +16,7 @@ interface groupingLevelCbParams {
   item?: DataItem,
   nodeItem?: NodeItem,
   nodeData?: NodeItem[]
-};
+}
 
 const groupingHierarchy: GroupingHierarchyLevel[] = [
   {

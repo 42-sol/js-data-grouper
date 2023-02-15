@@ -3,7 +3,7 @@ import { DataItem, DataItemParental } from './types';
 export function makeParentTree(
   data: DataItem[],
   parentId: number | string | null = null,
-  relation: string = 'parent_id:id'
+  relation = 'parent_id:id'
 ):
 DataItemParental[] {
   const [childKey, parentKey] = relation.split(':');
