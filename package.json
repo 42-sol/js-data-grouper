@@ -3,12 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "files": [
+    "src",
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "lint": "eslint \"src\" --ext .js,.ts",
     "lint:fix": "yarn run lint --fix",
-    "clean": "rm -rf lib",
-    "pack": "yarn run clean && tsc && cp -r src/core lib/ts"
+    "clean": "rm -rf dist",
+    "build": "yarn run clean && tsc && cp -r src/core dist/ts"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.51.0",

@@ -1,2 +1,2 @@
-export * from './dataGrouper';
-export * from './makeParentTree';
+export * from './functions/dataGrouper';
+export * from './functions/makeParentTree';

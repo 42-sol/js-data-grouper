@@ -1,5 +1,5 @@
 export class GroupingConfig {
   constructor() {
-
+    
   }
 }
