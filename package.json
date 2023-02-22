@@ -1,7 +1,6 @@
 {
   "name": "@42sol/js-data-grouper",
-  "version": "0.0.1",
-  "type": "module",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "keywords": ["data-grouper", "data group", "data grouper", "grouper", "tree"],
   "files": ["src", "dist"],
