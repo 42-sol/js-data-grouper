@@ -1,5 +1,5 @@
 {
-  "name": "data-in-graph-gropper",
+  "name": "@42sol/js-data-grouper",
   "private": true,
   "version": "0.0.0",
   "type": "module",
