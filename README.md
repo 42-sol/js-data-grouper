@@ -1,11 +1,20 @@
 # DataGrouper
 
+## DEV
+```shell
+# to run test page
+npm run dev
+# to show lint warns or fix them
+npm run lint
+npm run lint:fix
+# to compile dist/
+npm run build
+```
+
 ## Install
-```bash
+```shell
 npm install @42sol/js-data-grouper
-
-  # or
-
+# or
 yarn add @42sol/js-data-grouper
 ```
 
@@ -13,7 +22,7 @@ yarn add @42sol/js-data-grouper
 Imagine you need to make a tree structure by arrays of companies and it's employees.
 
 ```javascript
-// data
+// nodeItems - data to create nodes of structure
 const companies = [
   { id: 1, parentId: null, name: 'Meta' },
   { id: 2, parentId: 1, name: 'Instagram' },
@@ -21,6 +30,7 @@ const companies = [
   { id: 4, parentId: null, name: "IBM" }
 ];
 
+// data which should be grouped
 const employees = [
   { id: 1, parentId: null, name: "Isabel", job_start: "2020-01-01", company: 'Instagram' },
   { id: 2, parentId: 1, name: "John", job_start: "2020-01-01", company: 'Instagram' },
@@ -29,7 +39,7 @@ const employees = [
 ];
 ```
 
-```json
+```
 // result graph
 [
   {
@@ -79,7 +89,10 @@ const hierarchy = [
 const tree = groupData(employees, hierarchy);
 ```
 
-In this example you could use 'item', 'nodeData', 'nodeItem'
+In this example you could use 'item', 'nodeData', 'nodeItem'.
+- item - one of employees (this is used on employees' iteration)
+- nodeData - array you should define earlier
+- nodeItem - one of nodeData (this is used on inner recursive iterations)
 
 ## API
 ### *main methods:*
@@ -89,7 +102,7 @@ In this example you could use 'item', 'nodeData', 'nodeItem'
   <tr><td>makePatentTree</td><td>Params</td><td>Return</td><td></td></tr>
 </table>
 
-### *hierarchy config:*
+### *grouping hierarchy config:*
 <table>
   <tr><th>Name</th><th>Params</th><th>Type</th><th>Description</th></tr>
   <tr><td>nodeData</td><td>Params</td><td>Type</td><td></td></tr>
