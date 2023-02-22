@@ -1,11 +1,11 @@
-import { GroupNode } from './GroupNode';
+import { GroupNode } from '../classes/GroupNode';
 import {
   DataItem,
   DataItemGrouped,
   DataItemParental,
   GroupingHierarchyLevel,
   NodeItem
-} from './types';
+} from '../types';
 
 let $groupingHierarchy;
 
@@ -55,7 +55,7 @@ function getNodeToPush(item: DataItemParental, lastBranch: GroupNode[], hieLevel
 
       parentChain.forEach((el) => {
         const subNodeTitle = level.nodeTitle({ item, nodeItem: el, nodeData: levelData });
-        subNode = findExistedNode(lastBranch, uid(subNodeTitle)) || new GroupNode(el, uid(subNodeTitle), subNodeTitle).addTo(lastSubPlace);
+        subNode = findExistedNode(lastSubPlace, uid(subNodeTitle)) || new GroupNode(el, uid(subNodeTitle), subNodeTitle).addTo(lastSubPlace);
         subNode.prevParents = [...allParentNodes];
         allParentNodes.push(subNode);
         lastSubPlace = subNode.subNodes;

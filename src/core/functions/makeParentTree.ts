@@ -1,4 +1,4 @@
-import { DataItem, DataItemParental } from './types';
+import { DataItem, DataItemParental } from '../types';
 
 export function makeParentTree(
   data: DataItem[],

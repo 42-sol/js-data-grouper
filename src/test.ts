@@ -1,5 +1,4 @@
-import { makeParentTree } from './core/makeParentTree';
-import { groupData } from './core/dataGrouper';
+import { makeParentTree, groupData } from './core';
 import { DataItem, DataItemGrouped, GroupingHierarchyLevel, NodeItem } from './core/types';
 import { testEmployees, testCompanies } from './testData';
 
@@ -29,5 +28,5 @@ const groupingHierarchy: GroupingHierarchyLevel[] = [
   }
 ];
 
-const graphByCondition: DataItemGrouped[] = groupData(employeesTree, groupingHierarchy);
-console.log('graphByCondition', graphByCondition);
+const tree: DataItemGrouped[] = groupData(employeesTree, groupingHierarchy);
+console.log('tree', tree);

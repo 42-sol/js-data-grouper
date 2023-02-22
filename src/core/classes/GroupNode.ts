@@ -1,7 +1,7 @@
 import {
   DataItemParental,
   NodeItem
-} from './types';
+} from '../types';
 
 export class GroupNode {
   id: string;
