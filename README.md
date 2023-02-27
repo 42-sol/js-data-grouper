@@ -1,15 +1,7 @@
-# DataGrouper
+# JSDataGrouper (42sol, LLC)
+A functions to make data tree-structures
 
-## DEV
-```shell
-# to run test page
-npm run dev
-# to show lint warns or fix them
-npm run lint
-npm run lint:fix
-# to compile dist/
-npm run build
-```
+<img src='./logo.svg'>
 
 ## Install
 ```shell
@@ -39,7 +31,7 @@ const employees = [
 ];
 ```
 
-```
+```json
 // result graph
 [
   {
@@ -66,7 +58,7 @@ const employees = [
       }
     ]
   },
-  {...
+  //...
 ]
 ```
 
@@ -110,3 +102,14 @@ In this example you could use 'item', 'nodeData', 'nodeItem'.
   <tr><td>nodeTitle</td><td>Params</td><td>Type</td><td></td></tr>
   <tr><td>maxParentalDepth</td><td>Params</td><td>Type</td><td></td></tr>
 </table>
+
+## DEV
+```shell
+# to run test page
+npm run dev
+# to show lint warns or fix them
+npm run lint
+npm run lint:fix
+# to compile dist/
+npm run build
+```
