@@ -55,7 +55,7 @@ function getNodeToPush(item: DataItemParental, lastBranch: GroupNode[], hieLevel
 
       parentChain.forEach((el) => {
         const subNodeTitle = level.nodeTitle({ item, nodeItem: el, nodeData: levelData });
-        subNode = findExistedNode(lastSubPlace, uid(subNodeTitle)) || new GroupNode(el, uid(subNodeTitle), subNodeTitle).addTo(lastSubPlace);
+        subNode = findExistedNode(lastSubPlace, uid(el.id || subNodeTitle)) || new GroupNode(el, uid(el.id || subNodeTitle), subNodeTitle).addTo(lastSubPlace);
         subNode.prevParents = [...allParentNodes];
         allParentNodes.push(subNode);
         lastSubPlace = subNode.subNodes;
