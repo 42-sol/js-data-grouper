@@ -1,6 +1,6 @@
 {
   "name": "@42sol/js-data-grouper",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "author": "Dmitrii Pavlov <dm.rom.pav@gmail.com>",
   "main": "dist/index.js",
@@ -20,7 +20,9 @@
 
     "clean": "rm -rf dist",
     "add-ts": "rsync -av --exclude '*.test.ts' src/ dist/ts",
-    "pack": "yarn run clean && tsc && yarn run add-ts"
+    "pack": "yarn run clean && tsc && yarn run add-ts",
+
+    "build": "yarn run clean && tsc && cp -r src dist/ts"
   },
 
   "devDependencies": {
